@@ -1,6 +1,6 @@
 // Weather Fetching
 async function fetchWeather() {
-    const apiKey = 'YOUR_OPENWEATHER_API_KEY';
+    const apiKey = '238416beb1e4e9ee3e1c4c8f16fc2a2c';
     const city = 'Hyderabad';
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
