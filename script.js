@@ -24,19 +24,26 @@ function updatePrices() {
 fetchWeather();
 updatePrices();
 
-const machineryData = {
-    "tractor": {
-        name: "Mahindra 575 DI",
-        available: 5,
-        pricePerHour: "₹500",
-        ownerName: "Rajesh Kumar",
-        contact: "+91 98765 43210"
-    },
-    "harvester": {
-        name: "Combine Harvester",
-        available: 2,
-        pricePerHour: "₹1,200",
-        ownerName: "Sunil Singh",
-        contact: "+91 91234 56789"
-    }
-};
+async function loadMachinery() {
+    const response = await fetch('./machinery.json');
+    const machines = await response.json();
+    
+    const container = document.getElementById('machinery-list');
+    
+    machines.forEach(machine => {
+        const div = document.createElement('div');
+        div.className = 'card';
+        div.innerHTML = `
+            <h3>${machine.name}</h3>
+            <p>Available: ${machine.available}</p>
+            <p>Price: ₹${machine.pricePerHour}/hr</p>
+            <p>Owner: ${machine.owner}</p>
+            <a href="tel:${machine.contact}" class="btn">Call ${machine.owner}</a>
+        `;
+        container.appendChild(div);
+    });
+}
+
+// Run the function when the page loads
+loadMachinery();
+
