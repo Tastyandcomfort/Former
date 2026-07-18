@@ -23,3 +23,20 @@ function updatePrices() {
 
 fetchWeather();
 updatePrices();
+
+const machineryData = {
+    "tractor": {
+        name: "Mahindra 575 DI",
+        available: 5,
+        pricePerHour: "₹500",
+        ownerName: "Rajesh Kumar",
+        contact: "+91 98765 43210"
+    },
+    "harvester": {
+        name: "Combine Harvester",
+        available: 2,
+        pricePerHour: "₹1,200",
+        ownerName: "Sunil Singh",
+        contact: "+91 91234 56789"
+    }
+};
