@@ -1,0 +1,18 @@
+[
+  {
+    "id": "tractor-01",
+    "name": "Mahindra 575 DI",
+    "available": 5,
+    "pricePerHour": 500,
+    "owner": "Rajesh Kumar",
+    "contact": "+919876543210"
+  },
+  {
+    "id": "harvester-01",
+    "name": "Combine Harvester",
+    "available": 2,
+    "pricePerHour": 1200,
+    "owner": "Sunil Singh",
+    "contact": "+919123456789"
+  }
+]
