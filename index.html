@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khet Sathi — Everything for Indian farmers, in one place</title>
+<meta name="description" content="Rent equipment, hire labour, book storage, check today's crop prices, government schemes, weather and seed authenticity — built for Indian farmers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&family=Noto+Sans+Devanagari:wght@500;700&family=Noto+Sans+Telugu:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <a class="logo" href="#top">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 20L10 8L14 16L18 6L24 20" stroke="#1F6D45" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Khet Sathi</span>
+    </a>
+    <nav class="main-nav">
+      <a href="#marketplace" data-i18n="nav.marketplace">Marketplace</a>
+      <a href="#prices" data-i18n="nav.prices">Market prices</a>
+      <a href="#weather" data-i18n="nav.weather">Weather</a>
+      <a href="#schemes" data-i18n="nav.schemes">Govt schemes</a>
+      <a href="#seed-check" data-i18n="nav.seed">Seed check</a>
+      <a href="#safety" data-i18n="nav.safety">Safety</a>
+    </nav>
+    <div class="header-actions">
+      <select id="langSwitch" class="lang-switch" aria-label="Language">
+        <option value="en">English</option>
+        <option value="hi">हिंदी</option>
+        <option value="te">తెలుగు</option>
+      </select>
+      <a class="btn btn-primary btn-small" href="#list" data-i18n="nav.list">List / Offer</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <h1 data-i18n="hero.h1">Everything for the season, before you even leave the village.</h1>
+        <p class="hero-sub" data-i18n="hero.sub">Rent equipment, hire labour, or book godown space nearby — then check today's mandi trends, weather, government schemes and seed safety, all in one place.</p>
+        <div class="hero-actions">
+          <a href="#marketplace" class="btn btn-primary" data-i18n="hero.cta1">Open marketplace</a>
+          <a href="#list" class="btn btn-ghost" data-i18n="hero.cta2">Offer equipment, labour or storage</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><strong id="statCount">0</strong><span data-i18n="hero.stat1">listings live</span></div>
+          <div class="stat"><strong id="statStates">0</strong><span data-i18n="hero.stat2">states covered</span></div>
+          <div class="stat"><strong>0%</strong><span data-i18n="hero.stat3">booking commission</span></div>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 520 420" fill="none" xmlns="http://www.w3.org/2000/svg" class="field-scene">
+          <path d="M0 340 Q130 320 260 340 T520 340V420H0V340Z" fill="#EDF2E9"/>
+          <ellipse cx="260" cy="382" rx="220" ry="14" fill="#14231A" opacity="0.07"/>
+          <circle cx="430" cy="70" r="34" fill="#E8A93A" opacity="0.9"/>
+          <path d="M90 320h140v-46h-32l-22-34h-46v34h-40z" fill="#1F6D45"/>
+          <path d="M90 320h70v-50h-12v50z" fill="#123D28" opacity="0.35"/>
+          <rect x="94" y="252" width="38" height="30" rx="3" fill="#3C4841"/>
+          <rect x="99" y="257" width="28" height="16" rx="2" fill="#FFF8EC" opacity="0.85"/>
+          <circle cx="132" cy="320" r="36" fill="#14231A"/><circle cx="132" cy="320" r="21" fill="#5B6B63"/><circle cx="132" cy="320" r="8" fill="#E8A93A"/>
+          <circle cx="234" cy="320" r="22" fill="#14231A"/><circle cx="234" cy="320" r="12" fill="#5B6B63"/><circle cx="234" cy="320" r="4" fill="#E8A93A"/>
+          <path d="M216 274h30l18 30h-48z" fill="#3E9A6C"/>
+          <path d="M86 316h-26" stroke="#E8A93A" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARKETPLACE -->
+  <section class="browse-section" id="marketplace">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 data-i18n="market.h2">Marketplace</h2>
+        <p data-i18n="market.sub">Equipment, farm labour, or godown space — browse what's nearby and call to book.</p>
+      </div>
+
+      <div class="tabs" role="tablist">
+        <button class="tab-btn active" data-panel="panel-equipment" data-i18n="tab.equipment">Equipment</button>
+        <button class="tab-btn" data-panel="panel-labour" data-i18n="tab.labour">Hire labour</button>
+        <button class="tab-btn" data-panel="panel-godown" data-i18n="tab.godown">Godown / storage</button>
+      </div>
+
+      <!-- EQUIPMENT PANEL -->
+      <div class="tab-panel active" id="panel-equipment">
+        <div class="controls">
+          <input type="search" id="searchInput" data-i18n-placeholder="search.equipment" placeholder="Search equipment, district or state">
+          <select id="sortSelect">
+            <option value="recent" data-i18n="sort.recent">Newest first</option>
+            <option value="price-asc" data-i18n="sort.priceAsc.equipment">Price: low to high</option>
+            <option value="price-desc" data-i18n="sort.priceDesc.equipment">Price: high to low</option>
+          </select>
+        </div>
+        <div class="category-rail" id="categoryRail"></div>
+        <div class="listing-grid" id="listingGrid"></div>
+        <p class="empty-state" id="emptyState" hidden>No equipment matches that search. Try a different district or category.</p>
+      </div>
+
+      <!-- LABOUR PANEL -->
+      <div class="tab-panel" id="panel-labour">
+        <div class="controls">
+          <input type="search" id="labourSearch" data-i18n-placeholder="search.labour" placeholder="Search skill, district or state">
+          <select id="labourSort">
+            <option value="recent" data-i18n="sort.recent">Newest first</option>
+            <option value="price-asc" data-i18n="sort.priceAsc.labour">Wage: low to high</option>
+            <option value="price-desc" data-i18n="sort.priceDesc.labour">Wage: high to low</option>
+          </select>
+        </div>
+        <div class="category-rail" id="labourRail"></div>
+        <div class="listing-grid" id="labourGrid"></div>
+        <p class="empty-state" id="labourEmpty" hidden>No labour teams match that search yet.</p>
+      </div>
+
+      <!-- GODOWN PANEL -->
+      <div class="tab-panel" id="panel-godown">
+        <div class="controls">
+          <input type="search" id="godownSearch" data-i18n-placeholder="search.godown" placeholder="Search storage type, district or state">
+          <select id="godownSort">
+            <option value="recent" data-i18n="sort.recent">Newest first</option>
+            <option value="price-asc" data-i18n="sort.priceAsc.godown">Rent: low to high</option>
+            <option value="price-desc" data-i18n="sort.priceDesc.godown">Rent: high to low</option>
+          </select>
+        </div>
+        <div class="category-rail" id="godownRail"></div>
+        <div class="listing-grid" id="godownGrid"></div>
+        <p class="empty-state" id="godownEmpty" hidden>No storage listings match that search yet.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-section" id="how">
+    <div class="wrap how-inner">
+      <div class="how-step">
+        <div class="how-icon">
+          <svg viewBox="0 0 160 90" xmlns="http://www.w3.org/2000/svg">
+            <rect width="160" height="90" fill="#EDF2E9"/>
+            <circle cx="66" cy="40" r="24" fill="#3E9A6C"/>
+            <circle cx="66" cy="40" r="14" fill="#EDF2E9"/>
+            <path d="M84 58l22 22" stroke="#14231A" stroke-width="8" stroke-linecap="round"/>
+            <circle cx="118" cy="26" r="7" fill="#E8A93A"/>
+          </svg>
+        </div>
+        <span class="how-num">1</span>
+        <h3 data-i18n="how.1.title">Search nearby</h3>
+        <p data-i18n="how.1.desc">Filter by category and your district to see what's available — equipment, labour or storage.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-icon">
+          <svg viewBox="0 0 160 90" xmlns="http://www.w3.org/2000/svg">
+            <rect width="160" height="90" fill="#FBF0DB"/>
+            <path d="M56 24c-6 6-8 12-4 20 8 16 24 32 40 40 8 4 14 2 20-4l6-6c2-2 2-6 0-8l-10-10c-2-2-6-2-8 0l-3 3c-6-4-14-10-18-16l3-3c2-2 2-6 0-8l-10-10c-2-2-6-2-8 0z" fill="#14231A"/>
+            <circle cx="112" cy="30" r="6" fill="#E8A93A"/><circle cx="124" cy="42" r="4" fill="#E8A93A"/>
+          </svg>
+        </div>
+        <span class="how-num">2</span>
+        <h3 data-i18n="how.2.title">Call directly</h3>
+        <p data-i18n="how.2.desc">Every listing shows a name and number. No app-in-the-middle — you agree on dates and price directly.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-icon">
+          <svg viewBox="0 0 160 90" xmlns="http://www.w3.org/2000/svg">
+            <rect width="160" height="90" fill="#EDF2E9"/>
+            <path d="M30 66h40v-16h-11l-8-11h-14v11h-7z" fill="#1F6D45"/>
+            <circle cx="46" cy="66" r="11" fill="#14231A"/><circle cx="46" cy="66" r="5" fill="#5B6B63"/>
+            <circle cx="80" cy="66" r="7" fill="#14231A"/><circle cx="80" cy="66" r="3" fill="#5B6B63"/>
+            <path d="M100 60h4l4-4 4 8 4-12 4 8h6" stroke="#E8A93A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+        <span class="how-num">3</span>
+        <h3 data-i18n="how.3.title">Get the work done</h3>
+        <p data-i18n="how.3.desc">Pick up, deliver, or turn up on the day — and settle payment however you'd normally do it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARKET PRICES -->
+  <section class="prices-section" id="prices">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 data-i18n="prices.h2">Market prices</h2>
+        <p data-i18n-html="prices.sub_html">Sample reference prices only — mandi rates change daily by market and quality. Always confirm today's rate on <a href="https://agmarknet.gov.in" target="_blank" rel="noopener">Agmarknet</a> or <a href="https://enam.gov.in" target="_blank" rel="noopener">e-NAM</a>, or with your local mandi, before you sell.</p>
+      </div>
+      <input type="search" id="priceSearch" data-i18n-placeholder="price.search" placeholder="Search a crop" class="price-search">
+      <div class="price-table-wrap">
+        <table class="price-table" id="priceTable">
+          <thead>
+            <tr><th data-i18n="price.th.crop">Crop</th><th data-i18n="price.th.variety">Typical variety</th><th data-i18n="price.th.range">Indicative range (₹ / quintal)</th></tr>
+          </thead>
+          <tbody>
+            <tr data-crop="wheat"><td data-i18n="crop.wheat">Wheat</td><td data-i18n="crop.wheat.v">Common (Sharbati/HD)</td><td>₹2,100 – ₹2,600</td></tr>
+            <tr data-crop="paddy rice"><td data-i18n="crop.paddy">Paddy (Rice)</td><td data-i18n="crop.paddy.v">Common / Grade A</td><td>₹1,900 – ₹2,400</td></tr>
+            <tr data-crop="cotton"><td data-i18n="crop.cotton">Cotton</td><td data-i18n="crop.cotton.v">Medium staple</td><td>₹6,500 – ₹7,800</td></tr>
+            <tr data-crop="sugarcane"><td data-i18n="crop.sugarcane">Sugarcane</td><td data-i18n="crop.sugarcane.v">—</td><td>₹315 – ₹370 (per quintal, FRP-linked)</td></tr>
+            <tr data-crop="soybean"><td data-i18n="crop.soybean">Soybean</td><td data-i18n="crop.soybean.v">Yellow</td><td>₹3,800 – ₹4,700</td></tr>
+            <tr data-crop="maize"><td data-i18n="crop.maize">Maize</td><td data-i18n="crop.maize.v">Hybrid</td><td>₹1,900 – ₹2,300</td></tr>
+            <tr data-crop="mustard sarso"><td data-i18n="crop.mustard">Mustard (Sarso)</td><td data-i18n="crop.mustard.v">—</td><td>₹5,200 – ₹5,900</td></tr>
+            <tr data-crop="gram chana"><td data-i18n="crop.gram">Gram (Chana)</td><td data-i18n="crop.gram.v">Desi</td><td>₹5,300 – ₹6,200</td></tr>
+            <tr data-crop="onion"><td data-i18n="crop.onion">Onion</td><td data-i18n="crop.onion.v">Red</td><td>₹1,000 – ₹2,500</td></tr>
+            <tr data-crop="potato"><td data-i18n="crop.potato">Potato</td><td data-i18n="crop.potato.v">—</td><td>₹800 – ₹1,600</td></tr>
+            <tr data-crop="tomato"><td data-i18n="crop.tomato">Tomato</td><td data-i18n="crop.tomato.v">—</td><td>₹600 – ₹2,000</td></tr>
+            <tr data-crop="groundnut"><td data-i18n="crop.groundnut">Groundnut</td><td data-i18n="crop.groundnut.v">Bold</td><td>₹5,800 – ₹6,800</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEATHER -->
+  <section class="weather-section" id="weather">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 data-i18n="weather.h2">Weather</h2>
+        <p data-i18n="weather.sub">Check conditions before spraying, harvesting or transporting produce.</p>
+      </div>
+      <form class="weather-form" id="weatherForm">
+        <input type="text" id="weatherCity" data-i18n-placeholder="weather.placeholder" placeholder="Enter your village, town or district" required>
+        <button type="submit" class="btn btn-primary" data-i18n="weather.button">Check weather</button>
+      </form>
+      <div id="weatherResult" class="weather-result"></div>
+      <p class="source-note" data-i18n="weather.source">Weather data from Open-Meteo.</p>
+    </div>
+  </section>
+
+  <!-- GOVT SCHEMES -->
+  <section class="schemes-section" id="schemes">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 data-i18n="schemes.h2">Government schemes & funds</h2>
+        <p data-i18n="schemes.sub">A starting list — always confirm current eligibility and benefit amounts on the official site before applying.</p>
+      </div>
+      <div class="scheme-grid">
+        <div class="scheme-card">
+          <h3>PM-KISAN</h3>
+          <p data-i18n="scheme.pmkisan.desc">₹6,000/year direct income support in three instalments, paid straight to bank accounts. Extended through 2030–31.</p>
+          <a href="https://pmkisan.gov.in" target="_blank" rel="noopener">pmkisan.gov.in</a>
+        </div>
+        <div class="scheme-card">
+          <h3>PM Fasal Bima Yojana (PMFBY)</h3>
+          <p data-i18n="scheme.pmfby.desc">Crop insurance against drought, flood, pests and other losses, at a low farmer premium share.</p>
+          <a href="https://pmfby.gov.in" target="_blank" rel="noopener">pmfby.gov.in</a>
+        </div>
+        <div class="scheme-card">
+          <h3>Kisan Credit Card (KCC)</h3>
+          <p data-i18n="scheme.kcc.desc">Low-interest short-term credit for seeds, fertiliser and other input costs, available through most banks.</p>
+          <a href="https://www.myscheme.gov.in" target="_blank" rel="noopener" data-i18n="scheme.kcc.link">Apply via any nationalised or cooperative bank</a>
+        </div>
+        <div class="scheme-card">
+          <h3>Soil Health Card Scheme</h3>
+          <p data-i18n="scheme.soil.desc">Free soil testing every 2–3 years with crop-wise fertiliser and nutrient recommendations.</p>
+          <a href="https://soilhealth.dac.gov.in" target="_blank" rel="noopener">soilhealth.dac.gov.in</a>
+        </div>
+        <div class="scheme-card">
+          <h3 data-i18n="scheme.smam.title">SMAM — machinery subsidy</h3>
+          <p data-i18n="scheme.smam.desc">Subsidy on tractors and implements, plus support for Kisan Drone demonstrations and Custom Hiring Centres.</p>
+          <a href="https://agrimachinery.nic.in" target="_blank" rel="noopener">agrimachinery.nic.in</a>
+        </div>
+        <div class="scheme-card">
+          <h3>Namo Drone Didi</h3>
+          <p data-i18n="scheme.drone.desc">80% subsidy (up to ₹8 lakh) for women's Self-Help Groups to buy a drone and offer paid spraying services to nearby farmers.</p>
+          <a href="#" onclick="return false;" data-i18n="scheme.drone.link">Contact your local Krishi Vigyan Kendra or DAY-NRLM office</a>
+        </div>
+        <div class="scheme-card">
+          <h3>PM-KUSUM</h3>
+          <p data-i18n="scheme.kusum.desc">Subsidy for solar-powered irrigation pumps, cutting diesel and electricity costs.</p>
+          <a href="https://pmkusum.mnre.gov.in" target="_blank" rel="noopener">pmkusum.mnre.gov.in</a>
+        </div>
+        <div class="scheme-card">
+          <h3>e-NAM</h3>
+          <p data-i18n="scheme.enam.desc">Online mandi trading platform connecting farmers to buyers across markets for better price discovery.</p>
+          <a href="https://enam.gov.in" target="_blank" rel="noopener">enam.gov.in</a>
+        </div>
+        <div class="scheme-card">
+          <h3 data-i18n="scheme.aif.title">Agriculture Infrastructure Fund</h3>
+          <p data-i18n="scheme.aif.desc">3% interest subvention on loans up to ₹2 crore for building warehouses, cold storage and godowns.</p>
+          <a href="https://agriinfra.dac.gov.in" target="_blank" rel="noopener">agriinfra.dac.gov.in</a>
+        </div>
+        <div class="scheme-card">
+          <h3 data-i18n="scheme.kcc2.title">Kisan Call Centre</h3>
+          <p data-i18n="scheme.kcc2.desc">Free expert advice on crops, schemes and grievances, in your own language, 6 AM – 10 PM, every day.</p>
+          <a href="tel:+9118001801551">1800-180-1551</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEED CHECK -->
+  <section class="seed-section" id="seed-check">
+    <div class="wrap seed-inner">
+      <div class="section-head">
+        <h2 data-i18n="seed.h2">Is your seed genuine?</h2>
+        <p data-i18n="seed.sub">Certified seed sold to farmers carries a coloured tag. Knowing the system helps you spot a problem before sowing, not after.</p>
+      </div>
+      <div class="tag-legend">
+        <div class="tag-chip" style="--tag-color:#E8A93A;" data-i18n="tag.breeder">Breeder seed — golden yellow tag (not sold directly to farmers)</div>
+        <div class="tag-chip" style="--tag-color:#FFFFFF;" data-i18n="tag.foundation">Foundation seed — white tag</div>
+        <div class="tag-chip" style="--tag-color:#7A5FA6;" data-i18n="tag.registered">Registered seed — purple tag</div>
+        <div class="tag-chip" style="--tag-color:#2E6DA4;" data-i18n="tag.certified">Certified seed — blue tag (what most farmers buy)</div>
+      </div>
+      <ul class="checklist">
+        <li data-i18n="seed.c1">Buy only from a licensed dealer and always take a bill with the batch/lot number written on it.</li>
+        <li data-i18n="seed.c2">Check the tag colour and lot number sealed to the bag — blue means certified seed.</li>
+        <li data-i18n="seed.c3">Make sure the bag is sealed, not re-stitched, and check the germination % and purity % printed on the tag.</li>
+        <li data-i18n="seed.c4">Check the packing date and validity period — don't buy old stock past its tested date.</li>
+        <li data-i18n="seed.c5">Note the dealer's licence number from the bill in case you need to raise a complaint later.</li>
+        <li data-i18n="seed.c6">Before sowing the full field, test a small sample: wrap 20–25 seeds in a damp cloth for a few days and count how many sprout.</li>
+        <li data-i18n="seed.c7">If germination is poor or the crop looks abnormal, keep the bag, tag and bill as evidence.</li>
+        <li data-i18n-html="seed.c8_html">Report suspected spurious seed to your local Agriculture Department, Krishi Vigyan Kendra, or the Kisan Call Centre on <a href="tel:+9118001801551">1800-180-1551</a>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SAFETY / PRECAUTIONS -->
+  <section class="safety-section" id="safety">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 data-i18n="safety.h2">Safety precautions</h2>
+        <p data-i18n="safety.sub">General good practice — always follow the specific instructions that come with your machine or chemical label.</p>
+      </div>
+      <div class="safety-grid">
+        <div class="safety-card">
+          <h3 data-i18n="safety.machinery.title">Machinery</h3>
+          <ul>
+            <li data-i18n="safety.machinery.1">Keep PTO shafts and moving parts covered with their guards at all times.</li>
+            <li data-i18n="safety.machinery.2">Switch off and remove the key before clearing a blockage or doing repairs.</li>
+            <li data-i18n="safety.machinery.3">Avoid loose clothing or dupattas near rotating parts.</li>
+            <li data-i18n="safety.machinery.4">Keep children well away from tractors, threshers and harvesters while running.</li>
+          </ul>
+        </div>
+        <div class="safety-card">
+          <h3 data-i18n="safety.spray.title">Spraying & chemicals</h3>
+          <ul>
+            <li data-i18n="safety.spray.1">Wear gloves, a mask and full-sleeve clothing while mixing or spraying.</li>
+            <li data-i18n="safety.spray.2">Spray early morning or evening, and never against the wind direction.</li>
+            <li data-i18n="safety.spray.3">Wash hands, face and clothes thoroughly after spraying, before eating or smoking.</li>
+            <li data-i18n="safety.spray.4">Store chemicals locked away from children, animals and food grain.</li>
+          </ul>
+        </div>
+        <div class="safety-card">
+          <h3 data-i18n="safety.storage.title">Seed & storage</h3>
+          <ul>
+            <li data-i18n="safety.storage.1">Store seed and grain in a dry, well-ventilated, pest-free godown, off the ground.</li>
+            <li data-i18n="safety.storage.2">Check stored bags periodically for insects, dampness or rodent damage.</li>
+            <li data-i18n="safety.storage.3">Keep the storage area's rope, ladder and lifting equipment in good condition to prevent falls.</li>
+          </ul>
+        </div>
+        <div class="safety-card">
+          <h3 data-i18n="safety.weather.title">Weather</h3>
+          <ul>
+            <li data-i18n="safety.weather.1">Stop fieldwork and move to shelter at the first sign of lightning or thunder.</li>
+            <li data-i18n="safety.weather.2">During heatwaves, work early morning or evening and drink water often.</li>
+            <li data-i18n="safety.weather.3">Check the weather section above before planning spraying, harvesting or transport days.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIST YOUR LISTING -->
+  <section class="list-section" id="list">
+    <div class="wrap list-inner">
+      <div class="section-head">
+        <h2 data-i18n="list.h2">Offer equipment, labour or storage</h2>
+        <p data-i18n="list.sub">Pick what you're offering below — it appears in the marketplace as soon as you submit, no approval wait.</p>
+      </div>
+
+      <form id="listingForm" class="listing-form" novalidate>
+        <div class="form-row">
+          <label for="f-listing-type" data-i18n="form.whatListing">What are you listing?</label>
+          <select id="f-listing-type" required>
+            <option value="equipment" data-i18n="form.optEquipment">Equipment for rent</option>
+            <option value="labour" data-i18n="form.optLabour">Labour for hire</option>
+            <option value="godown" data-i18n="form.optGodown">Godown / storage space</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="f-name" id="name-label">Equipment name</label>
+          <input type="text" id="f-name" data-i18n-placeholder="form.namePlaceholder" placeholder="e.g. Mahindra 575 DI Tractor" required>
+        </div>
+
+        <div class="form-row">
+          <label for="f-category" data-i18n="form.categoryLabel">Category</label>
+          <select id="f-category" required></select>
+        </div>
+
+        <div class="form-row two-col">
+          <div>
+            <label for="f-price" id="price-label">Rental price (₹ per day)</label>
+            <input type="number" id="f-price" min="1" data-i18n-placeholder="form.pricePlaceholder" placeholder="e.g. 1500" required>
+          </div>
+          <div id="availability-group">
+            <label for="f-availability" data-i18n="form.availabilityLabel">Availability</label>
+            <select id="f-availability">
+              <option value="Available" data-i18n="form.availNow">Available now</option>
+              <option value="Available from next week" data-i18n="form.availSoon">Available from next week</option>
+              <option value="Booked" data-i18n="form.availBooked">Currently booked</option>
+            </select>
+          </div>
+          <div id="workers-group" hidden>
+            <label for="f-workers" data-i18n="form.workersLabel">Number of workers</label>
+            <input type="number" id="f-workers" min="1" data-i18n-placeholder="form.workersPlaceholder" placeholder="e.g. 6">
+          </div>
+          <div id="capacity-group" hidden>
+            <label for="f-capacity" data-i18n="form.capacityLabel">Capacity</label>
+            <input type="text" id="f-capacity" data-i18n-placeholder="form.capacityPlaceholder" placeholder="e.g. 2,000 sq ft / 150 tonnes">
+          </div>
+        </div>
+
+        <div class="form-row two-col">
+          <div>
+            <label for="f-village" data-i18n="form.villageLabel">Village / town</label>
+            <input type="text" id="f-village" data-i18n-placeholder="form.villagePlaceholder" placeholder="e.g. Sonipat" required>
+          </div>
+          <div>
+            <label for="f-district" data-i18n="form.districtLabel">District</label>
+            <input type="text" id="f-district" data-i18n-placeholder="form.districtPlaceholder" placeholder="e.g. Sonipat" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="f-state" data-i18n="form.stateLabel">State</label>
+          <select id="f-state" required>
+            <option value="" disabled selected data-i18n="form.statePlaceholder">Select a state</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="f-desc" data-i18n="form.descLabel">Description (optional)</label>
+          <textarea id="f-desc" rows="3" data-i18n-placeholder="form.descPlaceholder" placeholder="Condition, model year, skills, delivery options..."></textarea>
+        </div>
+
+        <div class="form-row">
+          <label for="f-photo" data-i18n="form.photoLabel">Photo (optional)</label>
+          <input type="file" id="f-photo" accept="image/*">
+          <p class="photo-hint" data-i18n="form.photoHint">A real photo of your equipment, team or storage gets far more calls than a generic one.</p>
+          <div id="photoPreview" class="photo-preview"></div>
+        </div>
+
+        <div class="form-row two-col">
+          <div>
+            <label for="f-owner" id="owner-label">Your name</label>
+            <input type="text" id="f-owner" data-i18n-placeholder="form.ownerPlaceholder" placeholder="e.g. Ramesh Yadav" required>
+          </div>
+          <div>
+            <label for="f-phone" data-i18n="form.phoneLabel">Contact number</label>
+            <input type="tel" id="f-phone" data-i18n-placeholder="form.phonePlaceholder" placeholder="10-digit mobile number" required pattern="[6-9][0-9]{9}" maxlength="10">
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-wide" data-i18n="form.submit">Submit listing</button>
+        <p class="form-note" id="formNote" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="logo">
+      <svg width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 20L10 8L14 16L18 6L24 20" stroke="#E8A93A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Khet Sathi</span>
+    </div>
+    <p data-i18n="footer.note">Built for farmers, by farmers. Listings are stored on your device for this demo. Market prices are indicative only — always confirm on Agmarknet or e-NAM before selling. Scheme details change — confirm on the official portal before applying.</p>
+  </div>
+</footer>
+
+<!-- CONTACT PANEL -->
+<div class="contact-overlay" id="contactOverlay"></div>
+<div class="contact-panel" id="contactPanel" role="dialog" aria-modal="true" aria-labelledby="panelTitle">
+  <button class="panel-close" id="panelClose" aria-label="Close">✕</button>
+  <div id="panelBody"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
