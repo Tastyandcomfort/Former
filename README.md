@@ -1,6 +1,6 @@
-# Khet Sathi — Farm Equipment Rental
+# Jai Kisan — Farm Equipment Rental
 
-A static website connecting Indian farmers who own machinery (tractors, harvesters, rotavators, sprayers, etc.) with farmers who need to rent it. No backend, no build step — plain HTML/CSS/JS, ready for GitHub Pages.
+Website connecting Indian farmers who own machinery (tractors, harvesters, rotavators, sprayers, etc.) with farmers who need to rent it. No backend — only HTML+CSS+JS+Python3-m+server-8000.
 
 ## What it does
 
@@ -10,7 +10,7 @@ A static website connecting Indian farmers who own machinery (tractors, harveste
 
 ## Run it locally
 
-No install needed. Just open `index.html` in a browser, or serve it:
+No install needed. Just open `` in a browser, or serve it:
 
 ```bash
 python3 -m http.server 8000
@@ -24,7 +24,7 @@ python3 -m http.server 8000
 3. Under **Build and deployment**, set **Source** to "Deploy from a branch", branch `main`, folder `/ (root)`.
 4. Save — your site will be live at `https://<your-username>.github.io/<repo-name>/` within a minute or two.
 
-## Current data model (demo-only)
+## Current data model
 
 Listings are stored in the visitor's own browser via `localStorage`, seeded with 8 sample listings across categories and states. That means:
 
